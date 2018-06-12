@@ -10,6 +10,7 @@ namespace TermUI
         int EndRow = -1;
         int Selection = -1;
         public ConsoleColor SelectedColor { get; set; } = ConsoleColor.DarkCyan;
+        public char SelectChar { get; set; } = '>';
         public Select(params string[] options)
         {
             for (int i = 0; i < options.Length; i++)
@@ -22,7 +23,7 @@ namespace TermUI
             Selection = -1;
             int CurrentSelection = 0;
             StartRow = Console.CursorTop;
-            EndRow = Console.CursorTop + Items.Count;
+            EndRow = StartRow + Items.Count;
             while (Selection == -1)
             {
                 for (int row = StartRow; row < EndRow; row++)
@@ -31,7 +32,7 @@ namespace TermUI
                     Console.ResetColor();
                     Console.SetCursorPosition(0, row);
 
-                    Console.Write(isCurrentRow ? "> " : "  ");
+                    Console.Write(isCurrentRow ? SelectChar + " " : "  ");
 
                     if (isCurrentRow)
                         Console.BackgroundColor = SelectedColor;
