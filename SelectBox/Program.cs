@@ -11,28 +11,9 @@ namespace SelectBoxTest
             Console.WriteLine("Select the matching fruit color.");
             string[] Options = new string[] { "Apples", "Pears", "Strawberries", "Oranges" };
 
-            Select control = new Select(Options);
+            Search control = new Search(persons);
             control.SelectedColor = ConsoleColor.DarkRed;
-            control.Read();
-
-
-            Console.WriteLine("Select the matching fruit color.");
-            control.SelectedColor = ConsoleColor.Green;
-            control.Read();
-
-            Console.WriteLine("Select the matching fruit color.");
-            control.SelectedColor = ConsoleColor.Red;
-            control.Read();
-
-            Console.WriteLine("Select the matching fruit color.");
-            control.SelectedColor = ConsoleColor.DarkYellow;
-            control.Read();
-
-            GridSelect Grid = new GridSelect(2, persons)
-            {
-                ColumnNames = new string[2] { "Nice people", "Bad people"}
-            };
-            Grid.Read();
+            Console.WriteLine(persons[control.Read()]);
             Console.ReadKey();
         }
     }
